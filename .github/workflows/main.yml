@@ -1,0 +1,17 @@
+name: Build Windows EXE
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compile
+        run: g++ -std=c++17 chick_jump.cpp -o chick_jump.exe
+      - name: Upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: chick_jump
+          path: chick_jump.exe
+          
